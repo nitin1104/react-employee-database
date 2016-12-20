@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node server",
-    "serve": "webpack-dev-server --inline --hot --content-base = public/ --port=3001 --progress"
+    "serve": "webpack-dev-server --inline --hot --content-base=public/ --port=3000 --progress"
   },
   "author": "Nitin Bhatnagar",
   "license": "MIT",
