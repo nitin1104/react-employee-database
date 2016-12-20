@@ -1,12 +1,22 @@
-var react = require('react');
-var reactDom = require('react-dom');
-require('./style.css');
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import jquery  from 'jquery';
+// import bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import styles from './style.css';
 
-var App = react.createClass({
+import HeaderComponent from './header.js';
+import ContentComponent from './content.js';
+import FooterComponent from './footer.js';
+
+
+var App = React.createClass({
 	render : function(){
-		var name = "Nitin";
-		return <div> Hi {name}! This is my first component!</div>
+		const pageLayout = {
+			width: '80%',
+			margin: '0 auto',
+		};
+		return <div style={pageLayout}> <HeaderComponent/><ContentComponent/><FooterComponent/></div>
 	}
 });
 
-reactDOM.render(<App></App> , document.getElementById('main'));
+ReactDOM.render(<App></App> , document.getElementById('main'));

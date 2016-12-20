@@ -1,4 +1,3 @@
-// var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -35,11 +34,10 @@ module.exports = {
 
 	},
 	plugins : [
-		// new webpack.HotModuleReplacementPlugin()
-		/*new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-    		}
-    	}),*/
+		new webpack.ProvidePlugin({   
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+		}),
 	]
 }
