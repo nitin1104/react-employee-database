@@ -7,11 +7,11 @@ import ListToShow from './listToShow';
 class ContentRight extends React.Component {
 	render () {
 		let content = <ListToShow/>
-		if(this.props.showFrom) {
+		if(this.props.currentView === 'addEmployee') {
 			content = <AddForm/>
 		}
 		return (
-			<div>
+			<div>	
 				{content}
 			</div>
 		)	

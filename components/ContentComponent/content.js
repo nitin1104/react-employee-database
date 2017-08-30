@@ -8,23 +8,26 @@ class ContentComponent extends React.Component {
 	constructor () {
 		super ()
 		this.state = {
-			showFrom :false
+			currentView: "",
 		}
-		this.toggleShowForm = this.toggleShowForm.bind(this)
+		this.updateClick = this.updateClick.bind(this);
 	}
-	toggleShowForm () {
-		this.setState ({showFrom :!this.state.showFrom}) 
+	updateClick(name) {
+		if (name === 'addEmployee') {
+			this.setState({currentView:"addEmployee"})
+		} else if (name === 'viewList') {
+			this.setState({currentView:"viewList"})
+		}
 	}
-
 	render(){
 		return(
 			<div className="container-fluid">
 				<div className="row">
 					<div className='col-sm-3 col-md-2 sidebar'>
-						<ContentLeft updateClick = {this.toggleShowForm}/>
+						<ContentLeft updateClick = {this.updateClick}/>
 					</div>
 					<div className='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
-						<ContentRight showFrom = {this.state.showFrom}/>
+						<ContentRight currentView = {this.state.currentView}/>
 					</div>
 				</div>
 			</div>
