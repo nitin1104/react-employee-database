@@ -2,7 +2,42 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class ListToShow extends React.Component {
+	constructor () {
+		super ()
+		this.state = {
+			list: [{
+				firstName: "Nitin",
+				lastName: "Bhatnagar",
+				skills: "ReactJS",
+				company: "Sapient"
+			},
+			{
+				firstName: "Yogesh",
+				lastName: "Sharma",
+				skills: "AngularJS",
+				company: "Sapient"
+			}
+		]
+		}
+	}
     render () {
+		var employeeList = this.state.list.map((item, index) => {
+			return <tr key = {index}>
+				<td>{item.firstName}</td>
+				<td>{item.lastName}</td>
+				<td>{item.skills}</td>
+				<td>{item.company}</td>
+				<td>
+				<a href="#" key={index}>
+					<span className="glyphicon glyphicon-pencil"></span>
+				</a>
+				<span> | </span>
+				<a href="#">
+					<span className="glyphicon glyphicon-trash"></span>
+				</a>
+			</td>
+			</tr>
+		})
         return (
             <div>
                 <h2 className="sub-header">List of Employees</h2>
@@ -10,7 +45,6 @@ class ListToShow extends React.Component {
 					<table className="table table-striped">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>First Name</th>
 								<th>Last Name</th>
 								<th>Skills</th>
@@ -19,22 +53,7 @@ class ListToShow extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>112466</td>
-								<td>Nitin</td>
-								<td>Bhatnagar</td>
-								<td>Interactive developer</td>
-								<td>Sapient</td>
-								<td>
-									<a href="#">
-										<span className="glyphicon glyphicon-pencil"></span>
-									</a>
-									<span> | </span>
-									<a href="#">
-										<span className="glyphicon glyphicon-trash"></span>
-									</a>
-								</td>
-							</tr>
+							{employeeList}
 						</tbody>
 					</table>
 				</div>

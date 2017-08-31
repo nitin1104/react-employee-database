@@ -33,8 +33,8 @@ class HeaderComponent extends React.Component{
 			</nav>
 		)
 	}
-		componentWillMount() {
-			console.log('Component WILL MOUNT!')
+	componentWillMount() {
+		console.log('Component WILL MOUNT!')
 	}
 
 	componentDidMount() {

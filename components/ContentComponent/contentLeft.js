@@ -9,21 +9,26 @@ class ContentLeft extends React.Component {
 			linkList: [{
 				label: 'View List',
 				name: 'viewList',
-				css: 'view-list'
-			},
-			{
+			}, {
 				label: 'Add Employee',
 				name: 'addEmployee',
-				css: 'add-employee'
-			}]
+			}],
+			activeLink: 'viewList'
 		};
+
+		this.navClickHandler = this.navClickHandler.bind(this);
+	}
+
+	navClickHandler(linkName) {
+		this.setState({activeLink: linkName});
+		this.props.updateClick(linkName);
 	}
 
 	render () {
 		var links =  this.state.linkList.map((item, index) => {
-			var css = item.css === this.state.currentView ? 'active' : '';
+			var css = item.name === this.state.activeLink ? 'active' : '';
 			return <li key = {index} className={css}>
-						<a href="#" onClick={() => this.props.updateClick(item.name)} name={item.name}>{item.label}</a>
+						<a href="#" onClick={() => this.navClickHandler(item.name)} name={item.name}>{item.label}</a>
 					</li>;
 		});
 
@@ -33,7 +38,7 @@ class ContentLeft extends React.Component {
 					{links}
 				</ul>
 			</div>
-		)
+		);
 	}
 }
 
