@@ -5,33 +5,30 @@ import styles from '../cover.css';
 class ContentLeft extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {activeLinkName: this.state};
-		this.updateClick = this.updateClick.bind(this);
+		this.state = {
+			linkList: [{
+				label: 'View List',
+				name: 'viewList',
+			}, {
+				label: 'Add Employee',
+				name: 'addEmployee',
+			}],
+			activeLink: 'viewList'
+		};
+
+		this.navClickHandler = this.navClickHandler.bind(this);
 	}
-	
-	updateClick(index, name) {
-		this.state.crruntView = name;
-		 if (name === 'addEmployee') {
-			 this.setState({currentView:"addEmployee"})
-		 } else if (name === 'viewList') {
-			this.setState({currentView:"viewList"})
-		 }
+
+	navClickHandler(linkName) {
+		this.setState({activeLink: linkName});
+		this.props.updateClick(linkName);
 	}
+
 	render () {
-		this.linkList = [{
-			label: 'View List',
-			name: 'viewList',
-			css: 'view-list'
-		},
-		{
-			label: 'Add Employee',
-			name: 'addEmployee',
-			css: 'add-employee'
-		}];
-		var links =  this.linkList.map((item, index) => {
-			var css = item.css === this.state.activeLinkName ? 'active' : '';
+		var links =  this.state.linkList.map((item, index) => {
+			var css = item.name === this.state.activeLink ? 'active' : '';
 			return <li key = {index} className={css}>
-						<a href="#" onClick={() => this.updateClick(index, item.name)} name={item.name}>{item.label}</a>
+						<a href="#" onClick={() => this.navClickHandler(item.name)} name={item.name}>{item.label}</a>
 					</li>;
 		});
 
@@ -41,7 +38,7 @@ class ContentLeft extends React.Component {
 					{links}
 				</ul>
 			</div>
-		)
+		);
 	}
 }
 
