@@ -12,13 +12,11 @@ class AddForm extends React.Component {
 				company: ""
 			}
 		}
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.saveClickHandler = this.saveClickHandler.bind(this);
 	}
 
-	handleSubmit() {
-		console.log(this.state.form);
-		this.props.shouldComponentUpdate(this.state.form)
-		event.preventDefault();
+	saveClickHandler(data) {
+		this.props.updateList(data)
 	}
 
 	handleChange (propertyName, event) {
@@ -30,7 +28,7 @@ class AddForm extends React.Component {
     render () {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form>
 				    <div className="form-group">
                         <label>First Name</label>
                         <input type ="text" className="form-control" value={this.state.form.firstName} onChange={this.handleChange.bind(this, 'firstName')} />
@@ -47,7 +45,7 @@ class AddForm extends React.Component {
                         <label>Company</label>
                         <input type ="text" className="form-control" value={this.state.form.company} onChange={this.handleChange.bind(this, 'company')}/>
                     </div>
-                     <button type="submit" className="btn btn-default">Save</button>
+							<button type="button" className="btn btn-default" onClick={() => this.saveClickHandler(this.state.form)}>Save</button>
 					</form>
             </div>
         )
