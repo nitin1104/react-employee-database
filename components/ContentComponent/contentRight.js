@@ -8,14 +8,22 @@ class ContentRight extends React.Component {
 	constructor (props) {
 		super (props)
 		this.state = {
-			list: this.props.form
+			employees: []
 		}
+		this.updateList = this.updateList.bind(this);
 	}
 
-	render () {
-		let content = <ListToShow/>
+	updateList(data) {
+		this.setState({ 
+			employees: this.state.employees.concat([data])
+		 })
+		 alert("Employee " + data.firstName + " successfully added");
+	}
+
+	render () {		
+		let content = <ListToShow listData = {this.state.employees} />
 		if(this.props.currentView === 'addEmployee') {
-			content = <AddForm/>
+			content = <AddForm updateList = {this.updateList}/>
 		}
 		return (
 			<div>	

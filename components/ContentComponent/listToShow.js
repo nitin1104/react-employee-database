@@ -2,26 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class ListToShow extends React.Component {
-	constructor () {
-		super ()
+	constructor (props) {
+		super (props)
 		this.state = {
-			list: [{
-				firstName: "Nitin",
-				lastName: "Bhatnagar",
-				skills: "ReactJS",
-				company: "Sapient"
-			},
-			{
-				firstName: "Yogesh",
-				lastName: "Sharma",
-				skills: "AngularJS",
-				company: "Sapient"
-			}
-		]
+			
 		}
 	}
     render () {
-		var employeeList = this.state.list.map((item, index) => {
+		var employeeList = this.props.listData.map((item, index) => {
 			return <tr key = {index}>
 				<td>{item.firstName}</td>
 				<td>{item.lastName}</td>

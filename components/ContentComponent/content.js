@@ -8,7 +8,7 @@ class ContentComponent extends React.Component {
 	constructor () {
 		super ()
 		this.state = {
-			currentView: "",
+			currentView: ""
 		}
 		this.updateClick = this.updateClick.bind(this);
 	}
@@ -27,7 +27,7 @@ class ContentComponent extends React.Component {
 						<ContentLeft updateClick = {this.updateClick} currentView = {this.state.currentView} />
 					</div>
 					<div className='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
-						<ContentRight currentView = {this.state.currentView}/>
+						<ContentRight currentView = {this.state.currentView} />
 					</div>
 				</div>
 			</div>
